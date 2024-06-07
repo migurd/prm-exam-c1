@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">prm-examen-c1</string>
+    <string name="title_calculadora">Calculadora</string>
+    <string name="user">angelqui</string>
+    <string name="pass">cisco123</string>
+    <string name="name">Angel Qui</string>
 </resources>
