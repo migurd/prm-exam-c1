@@ -10,8 +10,8 @@ public class Calculadora {
     }
 
     public Calculadora() {
-        this.num1 = 0;
-        this.num2 = 0;
+        this.num1 = 0.00f;
+        this.num2 = 0.00f;
     }
 
     public float getNum1() {

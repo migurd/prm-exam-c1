@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,26 +33,65 @@ public class CalculadoraActivity extends AppCompatActivity {
         btnSum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                outResultado.setText(floatToString(calc.suma()));
+                try {
+                    calc.setNum1(Float.parseFloat(inNum1.getText().toString()));
+                    calc.setNum2(Float.parseFloat(inNum2.getText().toString()));
+                    if (inNum1.getText().toString().isEmpty() || inNum1.getText().toString().isEmpty())
+                        throw new IllegalArgumentException("Inserte valores, por favor.");
+                    outResultado.setText(floatToString(calc.suma()));
+                } catch (IllegalArgumentException error) {
+                    Toast.makeText(CalculadoraActivity.this, "Inserte valores, por favor",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         btnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                outResultado.setText(floatToString(calc.resta()));
+                try {
+                    calc.setNum1(Float.parseFloat(inNum1.getText().toString()));
+                    calc.setNum2(Float.parseFloat(inNum2.getText().toString()));
+                    if (inNum1.getText().toString().isEmpty() || inNum1.getText().toString().isEmpty())
+                        throw new IllegalArgumentException("Inserte valores, por favor.");
+                    outResultado.setText(floatToString(calc.resta()));
+                } catch (IllegalArgumentException error) {
+                    Toast.makeText(CalculadoraActivity.this, "Inserte valores, por favor.",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
         btnMult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                outResultado.setText(floatToString(calc.multiplicacion()));
+                try {
+                    calc.setNum1(Float.parseFloat(inNum1.getText().toString()));
+                    calc.setNum2(Float.parseFloat(inNum2.getText().toString()));
+                    if (inNum1.getText().toString().isEmpty() || inNum1.getText().toString().isEmpty())
+                        throw new IllegalArgumentException("Inserte valores, por favor.");
+                    outResultado.setText(floatToString(calc.multiplicacion()));
+                } catch (IllegalArgumentException error) {
+                    Toast.makeText(CalculadoraActivity.this, "Inserte valores, por favor.",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
         btnDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                outResultado.setText(floatToString(calc.division()));
+                try {
+                    calc.setNum1(Float.parseFloat(inNum1.getText().toString()));
+                    calc.setNum2(Float.parseFloat(inNum2.getText().toString()));
+                    if (inNum1.getText().toString().isEmpty() || inNum1.getText().toString().isEmpty())
+                        throw new IllegalArgumentException("Inserte valores, por favor.");
+                    if (calc.getNum2() == 0)
+                        outResultado.setText("Inválido");
+                    else
+                        outResultado.setText(floatToString(calc.division()));
+                } catch (IllegalArgumentException error) {
+                    Toast.makeText(CalculadoraActivity.this, "Inserte valores, por favor.",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
         btnClean.setOnClickListener(new View.OnClickListener() {
@@ -87,8 +127,7 @@ public class CalculadoraActivity extends AppCompatActivity {
         btnClean = (Button)findViewById(R.id.btnLimpiar);
         btnBack = (Button)findViewById(R.id.btnRegresar);
 
-        calc.setNum1(Float.parseFloat(inNum1.getText().toString()));
-        calc.setNum2(Float.parseFloat(inNum1.getText().toString()));
+
     }
 
     public String floatToString(float num) {
